@@ -48,7 +48,7 @@ class Estado extends Service
 		$db = new Connection();
 
 		// get stats from db
-		$sql = "SELECT 'TOTAL' as stat, count(*) as val FROM first_timers WHERE source = '$source' UNION SELECT 'PAID' as stat, count(*) as val FROM first_timers WHERE paid = 1 AND source = '$source';";		
+		$sql = "SELECT 'TOTAL' as stat, count(email) as val FROM first_timers WHERE source = '$source' UNION SELECT 'PAID' as stat, count(email) as val FROM first_timers WHERE paid = 1 AND source = '$source';";
 		$r = $db->deepQuery($sql);
 
 		// send response
